@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <nav>
-      <a href="/">shop</a>
-      <a href="/admin/add-product">add product</a>
-    </nav>
+    <%- include("includes/navbar") %>
     <h1>shop page</h1>
     <% if(products.length > 0) { for (let counter of products) {%>
     <p>product: <%= counter.title %></p>
