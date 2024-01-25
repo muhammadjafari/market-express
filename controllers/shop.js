@@ -21,8 +21,9 @@ module.exports.getAllProducts = (req, res) => {
 module.exports.getOneProduct = (req, res) => {
   const pId = req.params.productId;
   Product.fetchOneProduct(pId, (p) => {
-    res.render("shop/product", {
-      pageTitle: pId,
+    console.log(p);
+    res.render("shop/product-detail", {
+      pageTitle: p.title,
       product: p,
     });
   });
