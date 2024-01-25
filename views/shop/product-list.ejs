@@ -9,11 +9,17 @@
   </head>
   <body>
     <%- include("../includes/navbar") %>
-    <h1>shop page</h1>
+    <h1><%= pageTitle %></h1>
     <% if(products.length > 0) { for (let counter of products) {%>
-    <p>title: <%= counter.title %></p>
-    <p>desc: <%= counter.description %></p>
-    <p>price: <%= counter.price %></p>
+    <div class="shop-cart">
+      <p>title: <%= counter.title %></p>
+      <p>desc: <%= counter.description %></p>
+      <p>price: <%= counter.price %></p>
+      <form action="/add-to-cart" method="POST">
+        <button>add to cart</button>
+      </form>
+    </div>
+
     <% } } else { %>
     <p>no product</p>
     <% } %>

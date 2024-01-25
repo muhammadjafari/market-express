@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title><%= pageTitle %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include("../includes/navbar") %>
+    <h1><%= pageTitle %></h1>
+    <% if(products.length > 0) { for (let counter of products) {%>
+    <div class="shop-cart">
+      <p>title: <%= counter.title %></p>
+      <p>desc: <%= counter.description %></p>
+      <p>price: <%= counter.price %></p>
+      <a href="/admin/edit-product">edit</a>
+      <form action="admin/delete-product" method="POST">
+        <button>delete</button>
+      </form>
+    </div>
+
+    <% } } else { %>
+    <p>no product</p>
+    <% } %>
+  </body>
+</html>

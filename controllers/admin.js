@@ -1,7 +1,9 @@
 const Product = require("../models/single-product");
 
 module.exports.addProductPage = (req, res) => {
-  res.render("admin/add-product");
+  res.render("admin/add-product", {
+    pageTitle: "add product",
+  });
 };
 
 module.exports.addProduct = (req, res) => {
@@ -16,7 +18,7 @@ module.exports.addProduct = (req, res) => {
 module.exports.getProducts = (req, res) => {
   Product.fetchAllProducts((products) => {
     res.render("admin/products", {
-      pageTitle: "all products",
+      pageTitle: "admin products",
       products: products,
     });
   });

@@ -29,3 +29,9 @@ module.exports.getCheckout = (req, res) => {
     pageTitle: "checkout",
   });
 };
+
+module.exports.getOrders = (req, res) => {
+  res.render("shop/orders", {
+    pageTitle: "orders",
+  });
+};
