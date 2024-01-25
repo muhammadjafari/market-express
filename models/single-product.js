@@ -18,12 +18,10 @@ module.exports = class Product {
       let products = [];
       console.log(fileContent);
       if (!err) {
-        if (fileContent) {
-          products = JSON.parse(fileContent);
-        }
+        products = JSON.parse(fileContent);
       }
       products.push(this);
-      fs.writeFile(filePath, "JSON.stringify(fileContent)", "utf8", (err) => {
+      fs.writeFile(filePath, JSON.stringify(products), (err) => {
         console.log(err);
       });
     });
