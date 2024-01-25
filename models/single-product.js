@@ -24,6 +24,7 @@ module.exports = class Product {
   }
 
   saveProductData() {
+    this.id = Math.floor(Math.random() * 10);
     fs.readFile(filePath, (err, fileContent) => {
       getProductsFromFile((products) => {
         products.push(this);
@@ -36,5 +37,14 @@ module.exports = class Product {
 
   static fetchAllProducts(cb) {
     getProductsFromFile(cb);
+  }
+
+  static fetchOneProduct(id, cb) {
+    getProductsFromFile((products) => {
+      const oneProduct = products.find((p) => {
+        return p.id === id;
+      });
+      cb(oneProduct);
+    });
   }
 };
