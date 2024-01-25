@@ -1,4 +1,6 @@
-const products = [];
+const fs = require("fs");
+const path = require("path");
+// const absolutePath = path.resolve("../");
 
 module.exports = class Product {
   constructor(title) {
@@ -6,7 +8,25 @@ module.exports = class Product {
   }
 
   saveProductData() {
-    products.push(this);
+    const filePath = path.join(
+      path.dirname(process.mainModule.filename),
+      "data",
+      "products.json"
+    );
+    console.log(filePath);
+    fs.readFile(filePath, (err, fileContent) => {
+      let products = [];
+      console.log(fileContent);
+      if (!err) {
+        if (fileContent) {
+          products = JSON.parse(fileContent);
+        }
+      }
+      products.push(this);
+      fs.writeFile(filePath, "JSON.stringify(fileContent)", "utf8", (err) => {
+        console.log(err);
+      });
+    });
   }
 
   static fetchAllProducts() {
