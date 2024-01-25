@@ -11,7 +11,9 @@
     <%- include("../includes/navbar") %>
     <h1>shop page</h1>
     <% if(products.length > 0) { for (let counter of products) {%>
-    <p>product: <%= counter.title %></p>
+    <p>title: <%= counter.title %></p>
+    <p>desc: <%= counter.description %></p>
+    <p>price: <%= counter.price %></p>
     <% } } else { %>
     <p>no product</p>
     <% } %>

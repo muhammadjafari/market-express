@@ -5,7 +5,10 @@ module.exports.addProductPage = (req, res) => {
 };
 
 module.exports.addProduct = (req, res) => {
-  const products = new Product(req.body.title);
+  const title = req.body.title;
+  const description = req.body.description;
+  const price = req.body.price;
+  const products = new Product(title, description, price);
   products.saveProductData();
   res.redirect("/");
 };

@@ -3,8 +3,10 @@ const path = require("path");
 // const absolutePath = path.resolve("../");
 
 module.exports = class Product {
-  constructor(title) {
+  constructor(title, description, price) {
     this.title = title;
+    this.description = description;
+    this.price = price;
   }
 
   saveProductData() {
@@ -13,7 +15,6 @@ module.exports = class Product {
       "data",
       "products.json"
     );
-    console.log(filePath);
     fs.readFile(filePath, (err, fileContent) => {
       let products = [];
       console.log(fileContent);
