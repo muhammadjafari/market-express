@@ -10,10 +10,10 @@ module.exports.addProduct = (req, res) => {
   res.redirect("/");
 };
 
-module.exports.getAllProducts = (req, res) => {
+module.exports.getProducts = (req, res) => {
   Product.fetchAllProducts((products) => {
-    res.render("shop/product-list", {
-      pageTitle: "shop",
+    res.render("admin/products", {
+      pageTitle: "all products",
       products: products,
     });
   });
