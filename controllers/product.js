@@ -1,7 +1,7 @@
 const Product = require("../models/single-product");
 
 module.exports.addProductPage = (req, res) => {
-  res.render("add-product");
+  res.render("admin/add-product");
 };
 
 module.exports.addProduct = (req, res) => {
@@ -12,7 +12,7 @@ module.exports.addProduct = (req, res) => {
 
 module.exports.getAllProducts = (req, res) => {
   Product.fetchAllProducts((products) => {
-    res.render("shop", {
+    res.render("shop/product-list", {
       pageTitle: "shop",
       products: products,
     });
