@@ -10,19 +10,22 @@
   <body>
     <%- include("../includes/navbar") %>
     <h1><%= pageTitle %></h1>
-    <% if(products.length > 0) { for (let counter of products) {%>
-    <div class="shop-cart">
-      <p>title: <%= counter.title %></p>
-      <p>desc: <%= counter.description %></p>
-      <p>price: <%= counter.price %></p>
-      <form action="/add-to-cart" method="POST">
-        <button>add to cart</button>
-      </form>
-      <a href="/products/<%= counter.id%>">detail</a>
-    </div>
+    <div class="cart-container">
+      <% if(products.length > 0) { for (let counter of products) {%>
 
-    <% } } else { %>
-    <p>no product</p>
-    <% } %>
+      <div class="shop-cart">
+        <p>title: <%= counter.title %></p>
+        <p>desc: <%= counter.description %></p>
+        <p>price: <%= counter.price %></p>
+        <form action="/add-to-cart" method="POST">
+          <button>add to cart</button>
+        </form>
+        <a href="/products/<%= counter.id%>">detail</a>
+      </div>
+
+      <% } } else { %>
+      <p>no product</p>
+      <% } %>
+    </div>
   </body>
 </html>

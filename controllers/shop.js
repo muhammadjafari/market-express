@@ -3,7 +3,7 @@ const Product = require("../models/single-product");
 module.exports.getIndex = (req, res) => {
   Product.fetchAllProducts((products) => {
     res.render("shop/index", {
-      pageTitle: "index",
+      pageTitle: "shop",
       products: products,
     });
   });
