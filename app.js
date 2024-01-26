@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
+const mongoConnect = require("./util/database").mongodbConnect;
 
 const shopRoute = require("./routes/shop");
 const adminRoutes = require("./routes/admin");
@@ -20,4 +21,6 @@ app.use((req, res) => {
   res.status(404).send("404");
 });
 
-app.listen(3000);
+mongoConnect(() => {
+  app.listen(3000);
+});
