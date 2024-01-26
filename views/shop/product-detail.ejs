@@ -13,5 +13,6 @@
     <p>title: <%= product.title %></p>
     <p>desc: <%= product.description %></p>
     <p>price: <%= product.price %></p>
+    <%- include("../includes/add-to-cart.ejs", {product: product}) %>
   </body>
 </html>

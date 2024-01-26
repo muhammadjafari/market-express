@@ -11,16 +11,14 @@
     <%- include("../includes/navbar") %>
     <h1><%= pageTitle %></h1>
     <div class="cart-container">
-      <% if(products.length > 0) { for (let counter of products) {%>
+      <% if(products.length > 0) { for (let product of products) {%>
 
       <div class="shop-cart">
-        <p>title: <%= counter.title %></p>
-        <p>desc: <%= counter.description %></p>
-        <p>price: <%= counter.price %></p>
-        <form action="/add-to-cart" method="POST">
-          <button>add to cart</button>
-        </form>
-        <a href="/products/<%= counter.id%>">detail</a>
+        <p>title: <%= product.title %></p>
+        <p>desc: <%= product.description %></p>
+        <p>price: <%= product.price %></p>
+        <%- include("../includes/add-to-cart.ejs", {product: product}) %>
+        <a href="/products/<%= product.id %>">detail</a>
       </div>
 
       <% } } else { %>
