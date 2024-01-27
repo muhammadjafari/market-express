@@ -22,17 +22,27 @@ module.exports.addProduct = (req, res) => {
     });
 };
 
-// module.exports.getProducts = (req, res) => {
-//   Product.fetchAllProducts((products) => {
-//     res.render("admin/products", {
-//       pageTitle: "admin products",
-//       products: products,
-//     });
-//   });
-// };
+module.exports.getProducts = (req, res) => {
+  Product.fetchAllProducts()
+    .then((products) => {
+      res.render("admin/products", {
+        pageTitle: "admin products",
+        products: products,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
-// module.exports.deleteProduct = (req, res) => {
-//   const pId = req.body.productId;
-//   Product.deleteProductData(pId);
-//   res.redirect("/admin/products");
-// };
+module.exports.deleteProduct = (req, res) => {
+  const pId = req.body.productId;
+  Product.deleteOneProduct(pId)
+    .then(() => {
+      console.log("product deleted");
+      res.redirect("/admin/products");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
