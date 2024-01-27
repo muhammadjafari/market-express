@@ -26,16 +26,17 @@ module.exports.getAllProducts = (req, res) => {
     });
 };
 
-// module.exports.getOneProduct = (req, res) => {
-//   const pId = req.params.productId;
-//   Product.fetchOneProduct(pId, (p) => {
-//     console.log(p);
-//     res.render("shop/product-detail", {
-//       pageTitle: p.title,
-//       product: p,
-//     });
-//   });
-// };
+module.exports.getOneProduct = (req, res) => {
+  const pId = req.params.productId;
+  Product.fetchOneProduct(pId)
+    .then((product) => {
+      res.render("shop/product-detail", {
+        product: product,
+        pageTitle: product.id,
+      });
+    })
+    .catch();
+};
 
 // module.exports.getCart = (req, res) => {
 //   res.render("shop/cart", {

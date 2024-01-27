@@ -18,7 +18,7 @@
         <p>desc: <%= product.description %></p>
         <p>price: <%= product.price %></p>
         <%- include("../includes/add-to-cart", {product: product}) %>
-        <a href="/products/<%= product.id%>">detail</a>
+        <a href="/products/<%= product._id%>">detail</a>
       </div>
 
       <% } } else { %>
