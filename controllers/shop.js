@@ -39,9 +39,17 @@ module.exports.getOneProduct = (req, res) => {
 };
 
 module.exports.getCart = (req, res) => {
-  res.render("shop/cart", {
-    pageTitle: "cart",
-  });
+  req.user
+    .getCart()
+    .then((products) => {
+      res.render("shop/cart", {
+        pageTitle: "cart",
+        products: products,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 module.exports.postCart = (req, res) => {

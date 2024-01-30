@@ -10,5 +10,14 @@
   <body>
     <%- include("../includes/navbar") %>
     <h1><%= pageTitle %></h1>
+    <% if(products.length > 0){ %>
+    <ul>
+      <% products.forEach( p => { %>
+      <li><%= p.title %></li>
+      <% }) %>
+    </ul>
+    <% } else { %>
+    <p>empty card</p>
+    <% } %>
   </body>
 </html>
