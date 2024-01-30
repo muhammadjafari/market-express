@@ -38,19 +38,23 @@ module.exports.getOneProduct = (req, res) => {
     .catch();
 };
 
-// module.exports.getCart = (req, res) => {
-//   res.render("shop/cart", {
-//     pageTitle: "cart",
-//   });
-// };
+module.exports.getCart = (req, res) => {
+  res.render("shop/cart", {
+    pageTitle: "cart",
+  });
+};
 
-// module.exports.postCart = (req, res) => {
-//   const pId = req.body.productId;
-//   Product.fetchOneProduct(pId, (product) => {
-//     Cart.addProduct(pId, product.price);
-//     res.redirect("/cart");
-//   });
-// };
+module.exports.postCart = (req, res) => {
+  const pId = req.body.productId;
+  Product.fetchOneProduct(pId)
+    .then((product) => {
+      return req.user.addToCart(product);
+    })
+    .then((result) => {
+      console.log(result);
+      res.redirect("/cart");
+    });
+};
 
 // module.exports.getCheckout = (req, res) => {
 //   res.render("shop/checkout", {
