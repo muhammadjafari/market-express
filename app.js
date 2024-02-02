@@ -1,7 +1,8 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-const mongoConnect = require("./util/database").mongodbConnect;
+// const mongoConnect = require("./util/database").mongodbConnect;
+const mongoose = require("mongoose");
 const User = require("./models/user");
 
 const shopRoute = require("./routes/shop");
@@ -33,6 +34,12 @@ app.use((req, res) => {
   res.status(404).send("404");
 });
 
-mongoConnect(() => {
-  app.listen(3000);
-});
+mongoose
+  .connect("mongodb://127.0.0.1:27017/test")
+  .then((result) => {
+    app.listen(3000);
+    console.log("database connected...");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
